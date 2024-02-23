@@ -15,26 +15,23 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        Component: Home,
+        element: <Home />,
       },
       {
         path: "/about",
-        exact: true,
-        Component: About,
+        element: <About />,
       },
       {
         path: "/users",
-        exact: true,
-        Component: Users,
+        element: <Users />,
         loader: userLoader,
         errorElement: <h3>Error !</h3>,
       },
       {
-        path: "/user/:userId",
-        exact: true,
-        Component: Single,
+        path: "/users/:userId",
+        element: <Single />,
         loader: SingleLoader,
-        errorElement: <h3>Error !</h3>,
+        // errorElement: <h3>Error Single page !</h3>,
       },
       {
         path: "/weather",
@@ -46,7 +43,6 @@ export const router = createBrowserRouter([
           },
           {
             path: "selected-location",
-            exact: true,
             Component: SelectedLocation,
           },
         ],

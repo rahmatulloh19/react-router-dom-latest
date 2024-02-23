@@ -14,7 +14,7 @@ export const Users = () => {
             key={user.id}
             style={{ paddingBlock: "10px", cursor: "pointer" }}
             onClick={() => {
-              navigate(`/user/${user.id}`);
+              navigate(`/users/${user.id}`);
             }}
           >
             {user.name}
@@ -27,6 +27,7 @@ export const Users = () => {
 
 export const userLoader = async () => {
   const { data } = await axios("https://jsonplaceholder.typicode.com/users");
+  // const user = await axios(`https://jsonplaceholder.typicode.com/users?id=${user.id}`);
 
   return data;
 };
