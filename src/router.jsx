@@ -6,6 +6,7 @@ import { Weather } from "./pages/Weather/Weather";
 import { CurrentLocation } from "./Components/CurrentLocation/CurrentLocation";
 import { SelectedLocation } from "./Components/SelectedLocation/SelectedLocation";
 import { Users, userLoader } from "./pages/Users/Users";
+import { Single, SingleLoader } from "./pages/Single/Single";
 
 export const router = createBrowserRouter([
   {
@@ -29,10 +30,10 @@ export const router = createBrowserRouter([
         errorElement: <h3>Error !</h3>,
       },
       {
-        path: "/:user",
+        path: "/user/:userId",
         exact: true,
-        Component: Users,
-        loader: userLoader,
+        Component: Single,
+        loader: SingleLoader,
         errorElement: <h3>Error !</h3>,
       },
       {

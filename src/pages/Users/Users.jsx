@@ -1,15 +1,24 @@
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 export const Users = () => {
   const data = useLoaderData();
+  const navigate = useNavigate();
 
   return (
     <div>
       Users
       <ul>
         {data.map((user) => (
-          <li key={user.id}>{user.name}</li>
+          <li
+            key={user.id}
+            style={{ paddingBlock: "10px", cursor: "pointer" }}
+            onClick={() => {
+              navigate(`/user/${user.id}`);
+            }}
+          >
+            {user.name}
+          </li>
         ))}
       </ul>
     </div>
@@ -17,7 +26,7 @@ export const Users = () => {
 };
 
 export const userLoader = async () => {
-  const { data } = await axios("https://jsonadaplaceholder.typicode.com/users");
+  const { data } = await axios("https://jsonplaceholder.typicode.com/users");
 
   return data;
 };
