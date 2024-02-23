@@ -5,11 +5,11 @@ import { About } from "./pages/About/About";
 import { Weather } from "./pages/Weather/Weather";
 import { CurrentLocation } from "./Components/CurrentLocation/CurrentLocation";
 import { SelectedLocation } from "./Components/SelectedLocation/SelectedLocation";
+import { Users, userLoader } from "./pages/Users/Users";
 
 export const router = createBrowserRouter([
   {
     path: "/",
-    exact: true,
     Component: App,
     children: [
       {
@@ -22,12 +22,25 @@ export const router = createBrowserRouter([
         Component: About,
       },
       {
+        path: "/users",
+        exact: true,
+        Component: Users,
+        loader: userLoader,
+        errorElement: <h3>Error !</h3>,
+      },
+      {
+        path: "/:user",
+        exact: true,
+        Component: Users,
+        loader: userLoader,
+        errorElement: <h3>Error !</h3>,
+      },
+      {
         path: "/weather",
         Component: Weather,
         children: [
           {
-            path: "current-location",
-            exact: true,
+            index: true,
             Component: CurrentLocation,
           },
           {

@@ -15,6 +15,9 @@ function App() {
           <li>
             <Link to="/weather">Weather</Link>
           </li>
+          <li>
+            <Link to="/users">Users</Link>
+          </li>
         </ul>
       </nav>
       <Outlet />
