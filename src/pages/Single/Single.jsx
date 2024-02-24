@@ -3,16 +3,20 @@ import { Suspense } from "react";
 import { Await, defer, useLoaderData } from "react-router-dom";
 
 export const Single = () => {
-  const { posts } = useLoaderData();
+  const dataPosts = useLoaderData();
+
+  const { data: posts } = dataPosts;
+
+  console.log(posts);
 
   return (
     <>
       <h3>Hello world</h3>
-      <Suspense fallback={<h2>Loading data </h2>}>
+      <Suspense fallback={<h2>Loading data... </h2>}>
         <Await resolve={posts}>
           {(data) => (
             <ul>
-              {data?.map((post) => (
+              {data.map((post) => (
                 <li style={{ paddingBlock: "10px" }} key={post.id}>
                   {post.title}
                 </li>
